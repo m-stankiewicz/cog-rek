@@ -15,11 +15,11 @@ class SecurityController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils The authentication utils service.
      * @return Response The response object.
      */
-    #[Route(path:"/login", name:"app_login")] 
+    #[Route(path:"/", name:"app_login")] 
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('lista');
+            return $this->redirectToRoute('post_list');
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
