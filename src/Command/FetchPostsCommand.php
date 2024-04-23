@@ -13,9 +13,26 @@ use App\Entity\Post;
 
 class FetchPostsCommand extends Command
 {
+    /**
+     * The default name of the command.
+     *
+     * @var string
+     */
     protected static $defaultName = 'app:fetch-posts';
+
+    /**
+     * The API data service.
+     *
+     * @var ApiDataService
+     */
     private ApiDataService $apiDataService;
 
+    /**
+     * Constructor for the FetchPostsCommand class.
+     *
+     * @param ApiDataService $apiDataService The API data service.
+     * @param EntityManagerInterface $entityManager The entity manager.
+     */
     public function __construct(ApiDataService $apiDataService, private EntityManagerInterface $entityManager)
     {
         parent::__construct();
@@ -23,6 +40,13 @@ class FetchPostsCommand extends Command
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * Executes the command to fetch posts and authors from an API and store them in the database.
+     *
+     * @param InputInterface $input The input interface.
+     * @param OutputInterface $output The output interface.
+     * @return int The command exit code.
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
