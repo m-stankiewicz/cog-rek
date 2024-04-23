@@ -52,7 +52,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
         
-        return new RedirectResponse('post_list');
+        return new RedirectResponse('lista');
     }
 
     protected function getLoginUrl(Request $request): string
